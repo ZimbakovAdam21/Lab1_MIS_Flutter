@@ -46,7 +46,7 @@ class ExamListScreen extends StatelessWidget {
 
           return Card(
             color: cardColor,
-            child: InkWell( // Додаваме InkWell за ефект при клик
+            child: InkWell( 
               onTap: () {
                 Navigator.push(
                   context,
@@ -133,3 +133,4 @@ class ExamListScreen extends StatelessWidget {
   }
 
 }
+
