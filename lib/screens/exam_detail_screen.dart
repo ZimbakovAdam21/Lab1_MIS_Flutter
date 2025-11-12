@@ -4,15 +4,15 @@ import 'package:intl/intl.dart';
 class ExamDetailScreen extends StatelessWidget {
   final Exam exam;
 
-  // Конструктор со именуван параметар
+  
   const ExamDetailScreen({super.key, required this.exam});
 
-  // Хелпер функција за пресметување на преостанато време
+  
   String _getCountdownString(DateTime examTime) {
     final now = DateTime.now();
     final difference = examTime.difference(now);
 
-    // Ако испитот е поминат
+    
     if (difference.isNegative) {
       return "Испитот е веќе поминат";
     }
@@ -25,7 +25,7 @@ class ExamDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Форматирање за приказ
+   
     final DateFormat dateTimeFormatter = DateFormat('dd.MM.yyyy  '' HH:mm');
     final String dateTimeString = dateTimeFormatter.format(exam.dateTime);
 
@@ -42,7 +42,7 @@ class ExamDetailScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min, // Картичката да се собере околу содржината
               children: [
-                // Име на предмет
+                
                 Text(
                   exam.subjectName,
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
@@ -52,7 +52,7 @@ class ExamDetailScreen extends StatelessWidget {
                 ),
                 const Divider(height: 30, thickness: 1),
 
-                // Детали (користиме хелпер функција)
+                
                 _buildDetailRow(
                   icon: Icons.calendar_today,
                   title: "Датум и време:",
@@ -66,7 +66,7 @@ class ExamDetailScreen extends StatelessWidget {
                 ),
                 const Divider(height: 30, thickness: 1),
 
-                // Преостанато време
+                
                 _buildDetailRow(
                   icon: Icons.hourglass_bottom,
                   title: "Преостанува:",
@@ -81,7 +81,7 @@ class ExamDetailScreen extends StatelessWidget {
     );
   }
 
-  // Хелпер widget за приказ на ред со детали
+  
   Widget _buildDetailRow({
     required IconData icon,
     required String title,
@@ -110,7 +110,7 @@ class ExamDetailScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: valueColor, // Ако е проследена боја, користи ја
+                color: valueColor, /
               ),
             ),
           ],
@@ -118,4 +118,5 @@ class ExamDetailScreen extends StatelessWidget {
       ],
     );
   }
+
 }
