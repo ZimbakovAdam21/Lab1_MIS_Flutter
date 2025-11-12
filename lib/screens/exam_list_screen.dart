@@ -5,10 +5,8 @@ import 'exam_detail_screen.dart';
 class ExamListScreen extends StatelessWidget {
   final String indexNumber;
 
-  // Конструктор со именуван параметар
   ExamListScreen({super.key, required this.indexNumber});
 
-  // Статичка (hardcoded) листа на испити
   final List<Exam> _examList = [
     Exam(subjectName: "Веројатност и статистика", dateTime: DateTime.now().add(const Duration(days: 5, hours: 3)), rooms: ["Амф Машински"]),
     Exam(subjectName: "Веб програмирање", dateTime: DateTime.now().add(const Duration(days: 19, hours: 1)), rooms: ["Б3.2"]),
@@ -24,10 +22,8 @@ class ExamListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 1. Подредување на листата хронолошки
     _examList.sort((a, b) => a.dateTime.compareTo(b.dateTime));
 
-    // 2. Земи го тековното време (за споредба)
     final now = DateTime.now();
 
     return Scaffold(
@@ -39,23 +35,19 @@ class ExamListScreen extends StatelessWidget {
         itemBuilder: (ctx, index) {
           final exam = _examList[index];
 
-          // 3. Проверка дали испитот е поминат
           final isPast = exam.dateTime.isBefore(now);
           final cardColor = isPast ? Colors.grey[300] : Colors.white;
           final titleColor = isPast ? Colors.grey[700] : Colors.black;
 
-          // 4. Форматирање на датум и време
           final DateFormat dateFormatter = DateFormat('dd.MM.yyyy');
           final DateFormat timeFormatter = DateFormat('HH:mm');
           final String dateString = dateFormatter.format(exam.dateTime);
           final String timeString = timeFormatter.format(exam.dateTime);
 
-          // 5. Креирање на Картичка (Card)
           return Card(
             color: cardColor,
             child: InkWell( // Додаваме InkWell за ефект при клик
               onTap: () {
-                // 6. Навигација кон детален преглед
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -68,7 +60,6 @@ class ExamListScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Име на предмет
                     Text(
                       exam.subjectName,
                       style: TextStyle(
@@ -78,7 +69,7 @@ class ExamListScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    // Датум и време
+                    
                     Row(
                       children: [
                         Icon(Icons.calendar_today, size: 16, color: Colors.indigo[700]),
@@ -91,12 +82,12 @@ class ExamListScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 8),
-                    // Простории
+                
                     Row(
                       children: [
                         Icon(Icons.room, size: 16, color: Colors.deepOrange[700]),
                         const SizedBox(width: 8),
-                        // Користиме Expanded за да не се прекрши текстот
+                        
                         Expanded(
                           child: Text(
                             exam.rooms.join(", "),
@@ -112,7 +103,6 @@ class ExamListScreen extends StatelessWidget {
           );
         },
       ),
-      // 7. Беџ на дното на екранот
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         elevation: 10,
@@ -141,4 +131,5 @@ class ExamListScreen extends StatelessWidget {
       ),
     );
   }
+
 }
