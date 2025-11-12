@@ -18,7 +18,7 @@ class ExamDetailScreen extends StatelessWidget {
     }
 
     final days = difference.inDays;
-    final hours = difference.inHours % 24; // % 24 за да се добијат само часовите
+    final hours = difference.inHours % 24; 
 
     return "$days дена, $hours часа";
   }
@@ -120,3 +120,4 @@ class ExamDetailScreen extends StatelessWidget {
   }
 
 }
+
