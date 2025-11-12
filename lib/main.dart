@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/exam_list_screen.dart';
-// --- 1. Модел на податоци ---
 
-
-// --- 2. Главен влез (Main) ---
 void main() {
   runApp(const ExamScheduleApp());
 }
@@ -33,7 +30,5 @@ class ExamScheduleApp extends StatelessWidget {
   }
 }
 
-// --- 3. Почетен екран (Листа на испити) ---
 
 
-// --- 4. Екран за детален преглед ---
