@@ -24,11 +24,11 @@ class ExamScheduleApp extends StatelessWidget {
           ),
         ),
       ),
-      // Поставете го почетниот екран и проследете го бројот на индекс
       home: ExamListScreen(indexNumber: "223171"),
     );
   }
 }
+
 
 
 
